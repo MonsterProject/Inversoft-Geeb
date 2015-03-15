@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<qualifiedTypeNameHistroy>
+<fullyQualifiedTypeName name="modelo.dao.UsuarioDao"/>
+<fullyQualifiedTypeName name="modelo.Logica"/>
+<fullyQualifiedTypeName name="javax.swing.JComboBox"/>
+<fullyQualifiedTypeName name="vista.VentanaRegitroUsuario"/>
+<fullyQualifiedTypeName name="java.awt.event.ActionListener"/>
+<fullyQualifiedTypeName name="java.lang.ClassNotFoundException"/>
+<fullyQualifiedTypeName name="org.omg.PortableInterceptor.SUCCESSFUL"/>
+<fullyQualifiedTypeName name="java.sql.Statement"/>
+<fullyQualifiedTypeName name="java.sql.ResultSet"/>
+<fullyQualifiedTypeName name="modelo.conexion.Conexion"/>
+<fullyQualifiedTypeName name="java.sql.DriverManager"/>
+<fullyQualifiedTypeName name="java.sql.PreparedStatement"/>
+<fullyQualifiedTypeName name="vista.VentanaCuentas"/>
+<fullyQualifiedTypeName name="javax.swing.JOptionPane"/>
+<fullyQualifiedTypeName name="java.lang.NullPointerException"/>
+<fullyQualifiedTypeName name="vista.VentanaPrincipal"/>
+<fullyQualifiedTypeName name="controlador.Aplicacion"/>
+<fullyQualifiedTypeName name="modelo.vo.UsuarioVo"/>
+<fullyQualifiedTypeName name="com.mysql.jdbc.Statement"/>
+</qualifiedTypeNameHistroy>
