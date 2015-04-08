@@ -6,7 +6,8 @@ package vista;
  * @author ERIKA
  */
 public class PanelLibroCont extends javax.swing.JPanel {
-	   private javax.swing.JButton btnAceptar;
+	
+	    private javax.swing.JButton btnAceptar;
 	    private javax.swing.JLabel jLabel1;
 	    private javax.swing.JLabel jLabel2;
 	    private javax.swing.JLabel jLabel4;

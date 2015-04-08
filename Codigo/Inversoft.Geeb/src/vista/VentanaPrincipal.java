@@ -3,6 +3,7 @@ package vista;
 
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -48,6 +49,8 @@ public class VentanaPrincipal extends javax.swing.JFrame implements ActionListen
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel etiSesiInco;
+    
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -94,6 +97,7 @@ public class VentanaPrincipal extends javax.swing.JFrame implements ActionListen
     	  panelEmergencia = new JPanel();
     	  
           jLabel2 = new javax.swing.JLabel();
+          etiSesiInco = new javax.swing.JLabel();
           jLabel1 = new javax.swing.JLabel();
           txtAliasLogin = new javax.swing.JTextField();
           passLogin = new javax.swing.JPasswordField();
@@ -140,6 +144,7 @@ public class VentanaPrincipal extends javax.swing.JFrame implements ActionListen
           jLabel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
           panelPrincipal.add(jLabel1);
           jLabel1.setBounds(-10, 10, 1410, 130);
+          
           panelPrincipal.add(txtAliasLogin);
           txtAliasLogin.setBounds(680, 80, 200, 30);
           panelPrincipal.add(passLogin);
@@ -192,6 +197,16 @@ public class VentanaPrincipal extends javax.swing.JFrame implements ActionListen
           panelPrincipal.add(jLabel10);
           jLabel10.setBounds(630, 300, 130, 30);
           panelPrincipal.add(txtApellidoR);
+          
+
+          
+          etiSesiInco.setFont(new java.awt.Font("Tahoma", 0, 15)); // NOI18N
+          etiSesiInco.setForeground(Color.red);
+          etiSesiInco.setBounds(640, 105, 500, 30);
+  		  panelPrincipal.add(etiSesiInco);
+  		
+
+          
           txtApellidoR.setBounds(750, 360, 250, 30);
           panelPrincipal.add(txtAliasR);
           txtAliasR.setBounds(750, 480, 250, 30);
@@ -217,9 +232,7 @@ public class VentanaPrincipal extends javax.swing.JFrame implements ActionListen
           panelPrincipal.add(jLabel13);
           jLabel13.setBounds(300, 240, 250, 140);
 
-          jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Fondos de Pantalla Gratis Abstractos (466).jpg"))); // NOI18N
-          panelPrincipal.add(jLabel11);
-          jLabel11.setBounds(0, 0, 1420, 800);
+
           
 	        tolbar.setRollover(true);
 
@@ -303,15 +316,20 @@ public class VentanaPrincipal extends javax.swing.JFrame implements ActionListen
 	        btnLibro.addActionListener(this);
 	        btnModificarCuen.addActionListener(this);
 	        btnModificarP.addActionListener(this);
-	 
-
+	        
+	        jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Fondos de Pantalla Gratis Abstractos (466).jpg"))); // NOI18N
+	        panelPrincipal.add(jLabel11);
+	        jLabel11.setBounds(0, 0, 1420, 800);
+	   
 	        tolbar.setBounds(0, 0, 1400, 100);
-          add(panelPrincipal);
-          panelEmergencia.setBounds(0, 0, 1400, 750);
-          panelPrincipal.setBounds(0, 0, 1400, 750);
+	        
+	        getContentPane().add(panelPrincipal);
 
-        btnRegistra.addActionListener(this);
-        btnEntrar.addActionListener(this);
+            panelEmergencia.setBounds(0, 0, 1400, 750);
+            panelPrincipal.setBounds(0, 0, 1400, 750);
+
+            btnRegistra.addActionListener(this);
+            btnEntrar.addActionListener(this);
         
 
     }
@@ -325,15 +343,21 @@ public class VentanaPrincipal extends javax.swing.JFrame implements ActionListen
 	public void actionPerformed(ActionEvent a) {
 if (a.getSource()==btnEntrar){
 	
-
-	panelPrincipal.setVisible(false);
+	boolean validarIngreso=miCoordinador.validarIngreso(txtAliasLogin.getText(), passLogin.getText());
 	
-	add(tolbar);
-	add(miMenu.jPanel1);
-	
-	
+	if (validarIngreso) {
+		
+		panelPrincipal.setVisible(false);
+		miMenu.iniciarAlias(txtAliasLogin.getText());
+		
+		add(tolbar);
+		add(miMenu.jPanel1);
+		
+	}else{
+		
+		  etiSesiInco.setText("el alias o la contraseña son incorrectos... Por Favor Diligencie los Campos. ");		
+	}
 }
-
 
 	if (a.getSource()==btnIngresarP){
 	miMenu.jPanel1.removeAll(); 
@@ -344,8 +368,7 @@ if (a.getSource()==btnEntrar){
 	miMenu.jPanel1.add(mipan.panelIngPres);
 	
 	
-	}
-	else if (a.getSource()==btnInicio){
+	}else if (a.getSource()==btnInicio){
 		
 		miMenu.jPanel1.removeAll();
 		miMenu.jPanel1.repaint();
@@ -391,9 +414,21 @@ if (a.getSource()==btnEntrar){
 		miMenu.jPanel1.add(miLibro.panelLibro);
 	}
 	if (a.getSource()==btnCerrarSesi){
-		//COMPLETAR DECISION GRUPAL 
-//		miMenu.jPanel1.setVisible(false);
-//		panelPrincipal.setVisible(true);
+		
+		miMenu.jPanel1.removeAll();
+		remove(tolbar);
+		miMenu.jPanel1.repaint();
+		panelPrincipal.setVisible(true);
+		txtAliasLogin.setText("");
+		passLogin.setText("");
+		miMenu.jPanel1.add(miMenu.jScrollPane1);
+		miMenu.jPanel1.add(miMenu.jLabel3);
+		miMenu.jPanel1.add(miMenu.bienvenido);
+		miMenu.jPanel1.add(miMenu.fondo);
+		etiSesiInco.setText("");
+
+		
+
 	}
 
 	if (a.getSource()==btnRegistra){

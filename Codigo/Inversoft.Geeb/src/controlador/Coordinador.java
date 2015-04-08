@@ -2,6 +2,9 @@ package controlador;
 
 import java.awt.Component;
 
+import javax.swing.JPasswordField;
+import javax.swing.JTextField;
+
 import modelo.Logica;
 import modelo.dao.UsuarioDao;
 import modelo.vo.UsuarioVo;
@@ -73,8 +76,15 @@ public class Coordinador {
 	}
 
 	public String registrarUsuario(UsuarioVo miUserVo) {
-		// TODO Auto-generated method stub
+		
 		return miUsuarioDao.registrarUsuario(miUserVo);
+	}
+
+	public boolean validarIngreso(String user,	String pass) {
+		
+		boolean validarEntrada;
+		
+		return validarEntrada=miUsuarioDao.validarEntrada(user, pass);
 	}
 
 

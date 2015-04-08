@@ -57,6 +57,41 @@ public class UsuarioDao {
 	public void setElMenu (PanelMenu elMenu){
 		this.elMenu=elMenu;
 	}
+
+	public boolean validarEntrada(String user, String pass) {
+		
+		boolean resultado;
+		
+		connection=conexion.getConnection();
+		consulta=("SELECT Pass_Admin, alias_admin FROM administrador WHERE Pass_Admin=? and alias_admin=?") ;
+		ResultSet result = null;	
+		try {
+			preStatement=connection.prepareStatement(consulta);
+			preStatement.setString(1, pass);
+			preStatement.setString(2, user);
+
+			result=preStatement.executeQuery();
+			
+			if (result.next()) {
+				
+				resultado=true;
+
+				
+			}else{
+				
+				resultado=false;
+			}
+
+			
+		} catch (SQLException e) {
+
+		
+		JOptionPane.showMessageDialog(null, "No se Pudo Validar la sesion :("+e.getMessage());
+		resultado=false;
+		}
+		
+		return resultado;
 	}
+}
 
 
